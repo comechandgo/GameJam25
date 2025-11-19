@@ -32,7 +32,7 @@ public class 过场脚本 : MonoBehaviour
             UpdateAlpha();
         }
     }
-    //这是一个单独设置透明度的方法
+    //这是一个单独设置透明度的方法，使用这个方法可以调整透明度
     public void UpdateAlpha()
     {
         Color nowColor = guochangimage.color;
