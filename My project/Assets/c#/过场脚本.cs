@@ -40,4 +40,5 @@ public class 过场脚本 : MonoBehaviour
         guochangimage.color = nowColor;
     }
 }
-//测试
+//更新了注释
+
