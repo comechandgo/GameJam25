@@ -16,6 +16,9 @@ public class EnemyAI : MonoBehaviour
     public bool hurt = false;
     public float hurt_timer = 0.0f;
     public float hurt_duration = 1.05f;
+    public int attack = 0;
+    public float attack_timer = 0.0f;
+    public float attack_duration = 1.05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,7 @@ public class EnemyAI : MonoBehaviour
         EnemyAnimChange();
     }
 
+    //行动系统
     void EnemyAction()
     {
         float face = transform.position.x - target.position.x;
@@ -48,10 +52,15 @@ public class EnemyAI : MonoBehaviour
             }
             anim_key = 3;
         }
-        else
+        else if (delta_distance > abandon_follow_distance)
         {
             enemy_anim.SetFloat("run",0.0f);
             anim_key = 2;
+        }
+        else if (delta_distance < follow_distance && attack != 1)
+        {
+            attack = 1;
+            enemy_anim.SetTrigger("attack");
         }
     }
 
@@ -74,7 +83,7 @@ public class EnemyAI : MonoBehaviour
     动画切换器(避免挨揍的时候放不出受击动画)
     动画代号(i)的对照表：
     0：受击 1.05s (实际上anim_key不会被设置为0)
-    1：攻击
+    1：攻击 1.05s (实际上anim_key不会被设置为1)
     2：待机
     3：跑动
     */
@@ -89,6 +98,16 @@ public class EnemyAI : MonoBehaviour
                 hurt = false;
                 anim_key = 2;
             }
+        }
+        else if (attack == 1)
+        {
+            attack_timer += Time.deltaTime;
+                if (attack_timer >= attack_duration)
+                {
+                    attack_timer = 0.0f;
+                    attack = 0;
+                    anim_key = 2;
+                }
         }
         else
         {
