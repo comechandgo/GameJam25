@@ -7,6 +7,7 @@ TagManager:
   - Hostile
   - Feet
   - Weapon
+  - Hostile Weapon
   layers:
   - Default
   - TransparentFX

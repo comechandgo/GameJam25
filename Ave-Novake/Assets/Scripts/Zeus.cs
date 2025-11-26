@@ -7,7 +7,7 @@ public class Zeus : MonoBehaviour
 {
     public GameObject enemy_prefab; //预制体，在Unity内设置
     public Transform player_transform; //玩家位置，在Start中用标签Player查找
-    public float spawn_distace = 10.0f; //在玩家前多少生成，其实这个也可以在Unity内设置
+    public float spawn_distace = 15.0f; //在玩家前多少生成，其实这个也可以在Unity内设置
 
     void Start()
     {
