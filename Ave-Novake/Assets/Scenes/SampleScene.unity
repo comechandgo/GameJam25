@@ -423,7 +423,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: -5}
+  m_LocalPosition: {x: 0, y: 2, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2332,7 +2332,13 @@ MonoBehaviour:
   player_hurt: 0
   player_hurt_timer: 0
   player_hurt_duration: 1.05
-  player_anim_key: 0
+  player_attack: 0
+  player_attack_timer: 0
+  player_attack_duration: 0.7
+  player_skill: 0
+  player_skill_timer: 0
+  player_skill_duration: 0.5
+  player_anim_key: 2
   player_hp: 100
 --- !u!70 &1709936133
 CapsuleCollider2D:
@@ -2440,7 +2446,7 @@ Transform:
   m_GameObject: {fileID: 1942840352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -16,8 +16,14 @@ public class NewBehaviourScript : MonoBehaviour
     public Animator player_anim;
     public int player_hurt = 0;
     public float player_hurt_timer = 0.0f;
-    public float player_hurt_duration = 0.03f;
-    public int player_anim_key;
+    public float player_hurt_duration;
+    public int player_attack = 0;
+    public float player_attack_timer = 0.0f;
+    public float player_attack_duration;
+    public int player_skill = 0;
+    public float player_skill_timer = 0.0f;
+    public float player_skill_duration;
+    public int player_anim_key = 2;
     public float player_hp;
     //public float player_max_hp;
 
@@ -77,9 +83,18 @@ public class NewBehaviourScript : MonoBehaviour
     //攻击系统
     void PlayerAttack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (player_hurt == 0 && player_attack == 0 && player_skill == 0)
         {
-            player_anim.SetTrigger("attack");
+            if (Input.GetButtonDown("Fire1"))
+            {
+                player_attack = 1;
+                player_anim.SetTrigger("attack");
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                player_skill = 1;
+                player_anim.SetTrigger("skill_1");
+            }
         }
     }
 
@@ -113,6 +128,26 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 player_hurt_timer = 0.0f;
                 player_hurt = 0;
+                player_anim_key = 2;
+            }
+        }
+        else if (player_attack == 1)
+        {
+            player_attack_timer += Time.deltaTime;
+            if (player_attack_timer >= player_attack_duration)
+            {
+                player_attack_timer = 0.0f;
+                player_attack = 0;
+                player_anim_key = 2;
+            }
+        }
+        else if (player_skill == 1)
+        {
+            player_skill_timer += Time.deltaTime;
+            if (player_skill_timer >= player_skill_duration)
+            {
+                player_skill_timer = 0.0f;
+                player_skill = 0;
                 player_anim_key = 2;
             }
         }
