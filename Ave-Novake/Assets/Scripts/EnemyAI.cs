@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    public Rigidbody2D enemy_rb;
     public Transform target;
     public Animator enemy_anim;
     public float hp;
@@ -15,13 +16,14 @@ public class EnemyAI : MonoBehaviour
     public int anim_key;
     public int hurt = 0;
     public float hurt_timer = 0.0f;
-    public float hurt_duration = 0.03f;
+    public float hurt_duration;
     public int attack = 0;
     public float attack_timer = 0.0f;
-    public float attack_duration = 0.08f;
+    public float attack_duration;
     // Start is called before the first frame update
     void Start()
     {
+        enemy_rb = GetComponent<Rigidbody2D>();
         enemy_anim = GetComponent<Animator>();
         //hp = max_hp;
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -37,11 +39,16 @@ public class EnemyAI : MonoBehaviour
     //行动系统
     void EnemyAction()
     {
-        float face = transform.position.x - target.position.x;
         float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
+        float face = transform.position.x - target.position.x;
         if (hurt == 0)
         {
-            if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
+            if (delta_distance < follow_distance && attack == 0)
+            {
+                attack = 1;
+                enemy_anim.SetTrigger("attack");
+            }
+            else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
             {
                 transform.position = Vector2.MoveTowards(transform.position,target.position,enemy_speed * Time.deltaTime);
                 if (face > 0)
@@ -57,11 +64,6 @@ public class EnemyAI : MonoBehaviour
             else if (delta_distance > abandon_follow_distance)
             {
                 anim_key = 2;
-            }
-            else if (delta_distance < follow_distance && attack == 0)
-            {
-                attack = 1;
-                enemy_anim.SetTrigger("attack");
             }
         }
     }
