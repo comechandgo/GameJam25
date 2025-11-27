@@ -6,8 +6,12 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     public Rigidbody2D enemy_rb;
-    public Transform target;
     public Animator enemy_anim;
+    public Transform target;
+    public GameObject[] new_target;
+    public bool friendly_status = false;
+    public bool need_to_seek = false;
+    public int working_status = 1;
     public float hp;
     //public float max_hp;
     public float enemy_speed;
@@ -39,31 +43,63 @@ public class EnemyAI : MonoBehaviour
     //行动系统
     void EnemyAction()
     {
-        float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
-        float face = transform.position.x - target.position.x;
-        if (hurt == 0)
+        if (friendly_status && need_to_seek)
         {
-            if (delta_distance < follow_distance && attack == 0)
+            new_target = GameObject.FindGameObjectsWithTag("Hostile");
+            if (new_target.Length >= 1)
             {
-                attack = 1;
-                enemy_anim.SetTrigger("attack");
-            }
-            else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
-            {
-                transform.position = Vector2.MoveTowards(transform.position,target.position,enemy_speed * Time.deltaTime);
-                if (face > 0)
+                float distance, new_target_distance = Mathf.Infinity;
+                for (int i = 0; i < new_target.Length; i++)
                 {
-                    transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
+                    if (new_target[i] != null)
+                    {
+                        distance = Vector3.Distance(transform.position, new_target[i].transform.position);
+                        if (distance < new_target_distance)
+                        {
+                            target = new_target[i].transform;
+                            new_target_distance = distance;
+                        }
+                    }
                 }
-                else
+                if (working_status != 1)
                 {
-                    transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
+                    working_status = 1;
                 }
-                anim_key = 3;
+                need_to_seek = false;
             }
-            else if (delta_distance > abandon_follow_distance)
+            else
             {
-                anim_key = 2;
+                working_status = 0;
+            }
+        }
+        if (working_status == 1)
+        {
+            float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
+            float face = transform.position.x - target.position.x;
+            if (hurt == 0)
+            {
+                if (delta_distance < follow_distance && attack == 0)
+                {
+                    attack = 1;
+                    enemy_anim.SetTrigger("attack");
+                }
+                else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position,target.position,enemy_speed * Time.deltaTime);
+                    if (face > 0)
+                    {
+                        transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
+                    }
+                 else
+                    {
+                        transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
+                    }
+                   anim_key = 3;
+                }
+                else if (delta_distance > abandon_follow_distance)
+                {
+                    anim_key = 2;
+                }
             }
         }
     }
@@ -76,19 +112,24 @@ public class EnemyAI : MonoBehaviour
             if (other.CompareTag("Weapon"))
             {
                 hp -= 5;
-                hurt = 1;
                 enemy_anim.SetTrigger("hurt");
-                attack = 0;
-                attack_timer = 0.0f;
+            }
+            else if (other.CompareTag("Hostile Weapon"))
+            {
+                hp -= 5;
+                enemy_anim.SetTrigger("hurt");
             }
             else if (other.CompareTag("Skill"))
             {
-                hp -= 70;
-                hurt = 1;
+                gameObject.tag = "Allies";
+                gameObject.layer = 7;
+                friendly_status = true;
+                need_to_seek = true;
                 enemy_anim.SetTrigger("hurt");
-                attack = 0;
-                attack_timer = 0.0f;
             }
+            hurt = 1;
+            attack = 0;
+            attack_timer = 0.0f;
             //拓展槽，可以给多样的受击
         }
     }

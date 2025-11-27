@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Hostile Weapon
   - Skill
+  - Allies
   layers:
   - Default
   - TransparentFX
