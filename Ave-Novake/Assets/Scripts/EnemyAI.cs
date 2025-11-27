@@ -45,10 +45,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (friendly_status && need_to_seek)
         {
+            working_status = 0;
             new_target = GameObject.FindGameObjectsWithTag("Hostile");
             if (new_target.Length >= 1)
             {
-                float distance, new_target_distance = Mathf.Infinity;
+                float distance, new_target_distance = abandon_follow_distance;
                 for (int i = 0; i < new_target.Length; i++)
                 {
                     if (new_target[i] != null)
@@ -58,18 +59,14 @@ public class EnemyAI : MonoBehaviour
                         {
                             target = new_target[i].transform;
                             new_target_distance = distance;
+                            need_to_seek = false;
+                            if (working_status != 1)
+                            {
+                                working_status = 1;
+                            }
                         }
                     }
                 }
-                if (working_status != 1)
-                {
-                    working_status = 1;
-                }
-                need_to_seek = false;
-            }
-            else
-            {
-                working_status = 0;
             }
         }
         if (working_status == 1)

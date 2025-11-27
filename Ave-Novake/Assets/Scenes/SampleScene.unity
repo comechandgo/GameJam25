@@ -3133,6 +3133,8 @@ MonoBehaviour:
   enemy_prefab: {fileID: 6552367505858967340, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
   player_transform: {fileID: 0}
   spawn_distace: 10
+  spawn_map: 01000000
+  spawn_map_copy: 01000000
 --- !u!4 &2091949078
 Transform:
   m_ObjectHideFlags: 0
@@ -3162,11 +3164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7036636353018552337, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.48
+      value: -11.52
       objectReference: {fileID: 0}
     - target: {fileID: 7036636353018552337, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.93
+      value: -1.84
       objectReference: {fileID: 0}
     - target: {fileID: 7036636353018552337, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3223,11 +3225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762647724034266185, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.42
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5762647724034266185, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.97
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5762647724034266185, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
       propertyPath: m_LocalPosition.z
