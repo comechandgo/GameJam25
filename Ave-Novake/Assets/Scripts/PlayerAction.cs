@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
@@ -23,7 +24,11 @@ public class NewBehaviourScript : MonoBehaviour
     public int player_skill = 0;
     public float player_skill_timer = 0.0f;
     public float player_skill_duration;
+    public float player_skill_cd;
+    public float player_skill_cd_timer = 0.0f;
     public int player_anim_key = 2;
+    public GameObject player_skill_ammo;
+    public float player_skill_ammo_speed;
     public float player_hp;
     //public float player_max_hp;
 
@@ -51,7 +56,7 @@ public class NewBehaviourScript : MonoBehaviour
         //检测水平方向按键是否被按下
         horizontal_num = Input.GetAxis("Horizontal");
         float face = Input.GetAxisRaw("Horizontal");
-        if (player_hurt == 0)
+        if (player_hurt == 0 && player_attack == 0 && player_skill == 0)
         {
             //判断朝向
             if (face != 0)
@@ -90,10 +95,31 @@ public class NewBehaviourScript : MonoBehaviour
                 player_attack = 1;
                 player_anim.SetTrigger("attack");
             }
-            else if (Input.GetKeyDown(KeyCode.E))
+            else if (Input.GetKeyDown(KeyCode.E) && player_skill_cd_timer == 0.0f)
             {
                 player_skill = 1;
+                player_skill_cd_timer = player_skill_cd;
                 player_anim.SetTrigger("skill_1");
+                Vector3 ammo_position = transform.position + player_feet.up * 0.7f;
+                GameObject ammo = Instantiate(player_skill_ammo,ammo_position,Quaternion.identity);
+                Rigidbody2D ammo_rb = ammo.GetComponent<Rigidbody2D>();
+                Collider2D ammo_coll = ammo.GetComponent<Collider2D>();
+                if (transform.localScale.x > 0)
+                {
+                    ammo_rb.velocity = new Vector2(-1.0f * (player_rb.velocity.x + player_skill_ammo_speed), ammo_rb.velocity.y);
+                }
+                else
+                {
+                    ammo_rb.velocity = new Vector2(player_rb.velocity.x + player_skill_ammo_speed, ammo_rb.velocity.y);
+                }
+            }
+        }
+        if (player_skill_cd_timer >= 0.0f)
+        {
+            player_skill_cd_timer -= Time.deltaTime;
+            if (player_skill_cd_timer < 0)
+            {
+                player_skill_cd_timer = 0.0f;
             }
         }
     }
@@ -107,6 +133,10 @@ public class NewBehaviourScript : MonoBehaviour
                 player_hp -= 5;
                 player_hurt = 1;
                 player_anim.SetTrigger("hurt");
+                player_attack = 0;
+                player_attack_timer = 0.0f;
+                player_skill = 0;
+                player_skill_timer = 0.0f;
             }
             //拓展槽，可以给多样的受击
         }

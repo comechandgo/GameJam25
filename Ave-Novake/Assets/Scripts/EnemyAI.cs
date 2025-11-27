@@ -78,6 +78,16 @@ public class EnemyAI : MonoBehaviour
                 hp -= 5;
                 hurt = 1;
                 enemy_anim.SetTrigger("hurt");
+                attack = 0;
+                attack_timer = 0.0f;
+            }
+            else if (other.CompareTag("Skill"))
+            {
+                hp -= 70;
+                hurt = 1;
+                enemy_anim.SetTrigger("hurt");
+                attack = 0;
+                attack_timer = 0.0f;
             }
             //拓展槽，可以给多样的受击
         }
