@@ -66,18 +66,10 @@ public class NewBehaviourScript : MonoBehaviour
             if (player_two_feet_on_the_ground)
             {
                 player_anim_key = 2;
-                /*
-                player_anim.SetFloat("run",Mathf.Abs(player_speed * horizontal_num));
-                player_anim.SetBool("jump",false);
-                */
             }
             else
             {
                 player_anim_key = 3;
-                /*
-                player_anim.SetFloat("run",0.0f);
-                player_anim.SetBool("jump",true);
-                */
             }
         }
     }
