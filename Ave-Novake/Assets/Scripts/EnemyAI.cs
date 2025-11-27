@@ -122,6 +122,7 @@ public class EnemyAI : MonoBehaviour
             else if (other.CompareTag("Skill"))
             {
                 gameObject.tag = "Allies";
+                transform.Find("enemy attack").tag = "Weapon";
                 gameObject.layer = 7;
                 friendly_status = true;
                 need_to_seek = true;
