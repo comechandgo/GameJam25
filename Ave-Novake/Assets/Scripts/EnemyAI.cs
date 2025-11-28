@@ -115,12 +115,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (hp >= 0)
         {
-            if (other.CompareTag("Weapon"))
-            {
-                hp -= 5;
-                enemy_anim.SetTrigger("hurt");
-            }
-            else if (other.CompareTag("Hostile Weapon"))
+            if (other.CompareTag("Weapon") && !friendly_status)
             {
                 hp -= 5;
                 enemy_anim.SetTrigger("hurt");
@@ -133,6 +128,11 @@ public class EnemyAI : MonoBehaviour
                 friendly_status = true;
                 need_to_seek = true;
                 target_tag = "Hostile";
+                enemy_anim.SetTrigger("hurt");
+            }
+            if (other.CompareTag("Hostile Weapon"))
+            {
+                hp -= 5;
                 enemy_anim.SetTrigger("hurt");
             }
             hurt = 1;

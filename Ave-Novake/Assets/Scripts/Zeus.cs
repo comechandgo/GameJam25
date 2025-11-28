@@ -19,6 +19,7 @@ public class Zeus : MonoBehaviour
 
     void Start()
     {
+        FixedPointSpawnOneEnemy(30.0f, 0.0f);
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -26,8 +27,10 @@ public class Zeus : MonoBehaviour
     {
         GlobalSpawnTimer();
         ProactivelySpawn();
+        /*
         TrackingSpawn(30.0f, 40.0f, spawn_map, 0);
         TrackingSpawn(-10.0f, -5.0f, spawn_map, 1);
+        */
     }
 
     void ProactivelySpawn()
@@ -79,6 +82,12 @@ public class Zeus : MonoBehaviour
         {
             spawn_position = player_transform.position + player_transform.right * spawn_distace;
         }
-        Instantiate(enemy_prefab,spawn_position,Quaternion.identity);
+        Instantiate(enemy_prefab, spawn_position, Quaternion.identity);
+    }
+
+    void FixedPointSpawnOneEnemy(float x, float y)
+    {
+        Vector3 spawn_position = new Vector3(x, y, transform.position.z);
+        Instantiate(enemy_prefab, spawn_position, Quaternion.identity);
     }
 }
