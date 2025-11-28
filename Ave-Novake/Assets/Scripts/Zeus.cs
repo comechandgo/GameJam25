@@ -15,10 +15,12 @@ public class Zeus : MonoBehaviour
     public float spawn_cd_timer = 0.0f;
     public bool spawn_available = true;
     public int[] spawn_map;
-    //public int[] spawn_map_copy;
+    public AudioClip[] bgms;
+    public AudioSource bgm_source;
 
     void Start()
     {
+        bgm_source = GetComponent<AudioSource>();
         FixedPointSpawnOneEnemy(30.0f, 0.0f);
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -27,10 +29,8 @@ public class Zeus : MonoBehaviour
     {
         GlobalSpawnTimer();
         ProactivelySpawn();
-        /*
         TrackingSpawn(30.0f, 40.0f, spawn_map, 0);
-        TrackingSpawn(-10.0f, -5.0f, spawn_map, 1);
-        */
+        //TrackingSpawn(-10.0f, -5.0f, spawn_map, 1);
     }
 
     void ProactivelySpawn()
@@ -63,12 +63,6 @@ public class Zeus : MonoBehaviour
             spawn_available = false;
             spawn_cd_timer = spawn_cd;
         }
-        /*
-        if (player_transform.position.x < min || player_transform.position.x > max)
-        {
-            map[point] = spawn_map_copy[point];
-        }
-        */
     }
 
     void Spawn()
@@ -90,4 +84,11 @@ public class Zeus : MonoBehaviour
         Vector3 spawn_position = new Vector3(x, y, transform.position.z);
         Instantiate(enemy_prefab, spawn_position, Quaternion.identity);
     }
+
+    /*
+    void ChangeMusic()
+    {
+        
+    }
+    */
 }
