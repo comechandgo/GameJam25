@@ -16,7 +16,7 @@ public class Zeus : MonoBehaviour
     public bool spawn_available = true;
     public int[] spawn_map;
     public AudioClip[] bgms;
-    public int[] banned_group = {0};
+    public int[] banned_group;
     private bool new_bgm = true;
     public AudioSource bgm_source;
     private int playing_bgm_num = 0;
