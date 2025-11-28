@@ -513,7 +513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1442976335
 Animator:
   serializedVersion: 5
@@ -3219,8 +3219,10 @@ MonoBehaviour:
   spawn_cd: 3
   spawn_cd_timer: 0
   spawn_available: 1
-  spawn_map: 0300000002000000
-  bgms: []
+  spawn_map: 0200000002000000
+  bgms:
+  - {fileID: 8300000, guid: 26b1ba5ebb2ba0541a5e73d36cf55a5a, type: 3}
+  - {fileID: 8300000, guid: 357d103d8e6a8444184ce348dfe72f7f, type: 3}
   bgm_source: {fileID: 0}
 --- !u!4 &2091949078
 Transform:
@@ -3247,7 +3249,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 26b1ba5ebb2ba0541a5e73d36cf55a5a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b0234bca72f83bb4c91c6d29c8b502f2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3257,10 +3259,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 100
-  MaxDistance: 500
+  MinDistance: 5
+  MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3268,23 +3270,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.5
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.0008
+      outSlope: -2.0008
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.5002
+      outSlope: -0.5002
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
