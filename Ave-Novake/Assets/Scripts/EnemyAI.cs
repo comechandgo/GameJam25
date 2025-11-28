@@ -10,12 +10,13 @@ public class EnemyAI : MonoBehaviour
     public Transform target;
     public GameObject target_GO;
     public GameObject[] new_target;
+    public EnemyAI target_ai;
     public string target_tag = "Player";
     public bool friendly_status = false;
     public bool need_to_seek = false;
     public int working_status = 1;
     public float hp;
-    //public float max_hp;
+    public float destroy_timer = 3.0f;
     public float enemy_speed;
     public float follow_distance;
     public float abandon_follow_distance;
@@ -26,12 +27,12 @@ public class EnemyAI : MonoBehaviour
     public int attack = 0;
     public float attack_timer = 0.0f;
     public float attack_duration;
+
     // Start is called before the first frame update
     void Start()
     {
         enemy_rb = GetComponent<Rigidbody2D>();
         enemy_anim = GetComponent<Animator>();
-        //hp = max_hp;
         target_GO = GameObject.FindGameObjectWithTag(target_tag);
         target = target_GO.transform;
     }
@@ -46,67 +47,91 @@ public class EnemyAI : MonoBehaviour
     //行动系统
     void EnemyAction()
     {
-        if (friendly_status && need_to_seek)
+        if (hp > 0)
         {
-            anim_key = 2;
-            working_status = 0;
-            new_target = GameObject.FindGameObjectsWithTag(target_tag);
-            if (new_target.Length >= 1)
+            if (friendly_status && !need_to_seek)
             {
-                float distance, new_target_distance = abandon_follow_distance;
-                for (int i = 0; i < new_target.Length; i++)
+                if (target_ai.hp <= 0)
                 {
-                    if (new_target[i] != null)
+                    working_status = 0;
+                    need_to_seek = true;
+                    target_GO = null;
+                    target = null;
+                    target_ai = null;
+                }
+            }
+            if (friendly_status && need_to_seek)
+            {
+                anim_key = 2;
+                working_status = 0;
+                new_target = GameObject.FindGameObjectsWithTag(target_tag);
+                if (new_target.Length >= 1)
+                {
+                    float distance, new_target_distance = abandon_follow_distance;
+                    for (int i = 0; i < new_target.Length; i++)
                     {
-                        distance = Vector3.Distance(transform.position, new_target[i].transform.position);
-                        if (distance < new_target_distance)
+                        if (new_target[i] != null && new_target[i].GetComponent<EnemyAI>().hp > 0)
                         {
-                            target_GO = new_target[i];
-                            target = target_GO.transform;
-                            new_target_distance = distance;
-                            need_to_seek = false;
-                            if (working_status != 1)
+                            distance = Vector3.Distance(transform.position, new_target[i].transform.position);
+                            if (distance < new_target_distance)
                             {
-                                working_status = 1;
+                                target_GO = new_target[i];
+                                target_ai = target_GO.GetComponent<EnemyAI>();
+                                target = target_GO.transform;
+                                new_target_distance = distance;
+                                need_to_seek = false;
+                                if (working_status != 1)
+                                {
+                                    working_status = 1;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        if (working_status == 1 && target_GO.tag == target_tag)
-        {
-            float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
-            float face = transform.position.x - target.position.x;
-            if (hurt == 0)
+            if (working_status == 1 && target_GO.tag == target_tag)
             {
-                if (delta_distance < follow_distance && attack == 0)
+                float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
+                float face = transform.position.x - target.position.x;
+                if (hurt == 0)
                 {
-                    attack = 1;
-                    enemy_anim.SetTrigger("attack");
-                }
-                else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position,target.position,enemy_speed * Time.deltaTime);
-                    if (face > 0)
+                    if (delta_distance < follow_distance && attack == 0)
                     {
-                        transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
+                        attack = 1;
+                        enemy_anim.SetTrigger("attack");
                     }
-                 else
+                    else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
                     {
-                        transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
+                        transform.position = Vector2.MoveTowards(transform.position,target.position,enemy_speed * Time.deltaTime);
+                        if (face > 0)
+                        {
+                            transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
+                        }
+                     else
+                        {
+                            transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
+                        }
+                        anim_key = 3;
                     }
-                    anim_key = 3;
-                }
-                else if (delta_distance > abandon_follow_distance)
-                {
-                    anim_key = 2;
+                    else if (delta_distance > abandon_follow_distance)
+                    {
+                        anim_key = 2;
+                    }
                 }
             }
+            else if (target_GO.tag != target_tag)
+            {
+                need_to_seek = true;
+            }
         }
-        else if (target_GO.tag != target_tag)
+        else
         {
-            need_to_seek = true;
+            destroy_timer -= Time.deltaTime;
+            if (destroy_timer <= 0)
+            {
+                destroy_timer = 0.0f;
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -117,8 +142,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (other.CompareTag("Weapon") && !friendly_status)
             {
-                hp -= 5;
-                enemy_anim.SetTrigger("hurt");
+                InjuryJudgment();
             }
             else if (other.CompareTag("Skill"))
             {
@@ -132,13 +156,25 @@ public class EnemyAI : MonoBehaviour
             }
             if (other.CompareTag("Hostile Weapon"))
             {
-                hp -= 5;
-                enemy_anim.SetTrigger("hurt");
+                InjuryJudgment();
             }
             hurt = 1;
             attack = 0;
             attack_timer = 0.0f;
             //拓展槽，可以给多样的受击
+        }
+    }
+
+    void InjuryJudgment()
+    {
+        hp -= 5;
+        if (hp > 0)
+        {
+            enemy_anim.SetTrigger("hurt");
+        }
+        else
+        {
+            enemy_anim.SetBool("dead",true);
         }
     }
 

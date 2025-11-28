@@ -136,5 +136,9 @@ public class Zeus : MonoBehaviour
                 bgm_source.loop = true;
             }
         }
+        else if (playing_bgm_num > n)
+        {
+            bgm_source.loop = true;
+        }
     }
 }
