@@ -3221,8 +3221,10 @@ MonoBehaviour:
   spawn_available: 1
   spawn_map: 0200000002000000
   bgms:
-  - {fileID: 8300000, guid: 26b1ba5ebb2ba0541a5e73d36cf55a5a, type: 3}
-  - {fileID: 8300000, guid: 357d103d8e6a8444184ce348dfe72f7f, type: 3}
+  - {fileID: 8300000, guid: 53979b53efda50b478cbbe5744afe18c, type: 3}
+  - {fileID: 8300000, guid: bd24cec0956dd1245a8ecd2458288298, type: 3}
+  - {fileID: 8300000, guid: 47d71f593f5a8984caad05eeb3017e10, type: 3}
+  banned_group: 00000000
   bgm_source: {fileID: 0}
 --- !u!4 &2091949078
 Transform:
@@ -3249,8 +3251,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b0234bca72f83bb4c91c6d29c8b502f2, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3262,7 +3264,7 @@ AudioSource:
   MinDistance: 5
   MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3608,7 +3610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &8523477403327499345
 BoxCollider2D:
   m_ObjectHideFlags: 0

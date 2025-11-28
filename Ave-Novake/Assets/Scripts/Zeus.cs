@@ -16,12 +16,17 @@ public class Zeus : MonoBehaviour
     public bool spawn_available = true;
     public int[] spawn_map;
     public AudioClip[] bgms;
+    public int[] banned_group = {0};
+    private bool new_bgm = true;
     public AudioSource bgm_source;
+    private int playing_bgm_num = 0;
 
     void Start()
     {
         bgm_source = GetComponent<AudioSource>();
-        FixedPointSpawnOneEnemy(30.0f, 0.0f);
+        bgm_source.clip = bgms[0];
+        bgm_source.Play();
+        //FixedPointSpawnOneEnemy(30.0f, 0.0f);
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -29,7 +34,9 @@ public class Zeus : MonoBehaviour
     {
         GlobalSpawnTimer();
         ProactivelySpawn();
-        TrackingSpawn(30.0f, 40.0f, spawn_map, 0);
+        //TrackingSpawn(30.0f, 40.0f, spawn_map, 0);
+        ChangeMusic();
+        TrackPlayerForMusic(20.0f, 40.0f, 2);
         //TrackingSpawn(-10.0f, -5.0f, spawn_map, 1);
     }
 
@@ -85,10 +92,48 @@ public class Zeus : MonoBehaviour
         Instantiate(enemy_prefab, spawn_position, Quaternion.identity);
     }
 
-    /*
+    
     void ChangeMusic()
     {
-        
+        bool in_the_banned_group = false;
+        if (new_bgm)
+        {
+            for (int i = 0; i < banned_group.Length; i++)
+            {
+                if (playing_bgm_num == banned_group[i])
+                {
+                    in_the_banned_group = true;
+                }
+            }
+        }
+        if (in_the_banned_group)
+        {
+            bgm_source.loop = false;
+            if (!bgm_source.isPlaying)
+            {
+                playing_bgm_num += 1;
+                bgm_source.clip = bgms[playing_bgm_num];
+                bgm_source.Play();
+                new_bgm = true;
+                bgm_source.loop = true;
+            }
+        }
     }
-    */
+    
+
+    void TrackPlayerForMusic(float left_b, float right_b, int n)
+    {
+        if (player_transform.position.x >= left_b && player_transform.position.x <= right_b && playing_bgm_num != n)
+        {
+            bgm_source.loop = false;
+            if (!bgm_source.isPlaying)
+            {
+                bgm_source.clip = bgms[n];
+                bgm_source.Play();
+                new_bgm = true;
+                playing_bgm_num = n;
+                bgm_source.loop = true;
+            }
+        }
+    }
 }
