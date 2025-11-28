@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 12631114}
   - component: {fileID: 12631113}
   - component: {fileID: 12631115}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TilemapMorning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11455,6 +11455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZHUJUE
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 41e99f46bd917b946b7b2d67839ede12, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 41e99f46bd917b946b7b2d67839ede12, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.0891078
@@ -11465,11 +11469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 41e99f46bd917b946b7b2d67839ede12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.4296
+      value: -1.605
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 41e99f46bd917b946b7b2d67839ede12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8576
+      value: -0.531
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 41e99f46bd917b946b7b2d67839ede12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11737,10 +11741,16 @@ GameObject:
   m_Component:
   - component: {fileID: 684529128}
   - component: {fileID: 684529127}
+<<<<<<< HEAD
   - component: {fileID: 684529131}
   - component: {fileID: 684529130}
   - component: {fileID: 684529129}
   m_Layer: 0
+=======
+  - component: {fileID: 684529130}
+  - component: {fileID: 684529129}
+  m_Layer: 3
+>>>>>>> e4236874ed37a3c75ea2b6afef7e7155dd235d6b
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11776,6 +11786,7 @@ Transform:
   - {fileID: 2120400429}
   m_Father: {fileID: 720144031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!50 &684529129
 Rigidbody2D:
   serializedVersion: 4
@@ -11804,6 +11815,9 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!19719996 &684529130
+=======
+--- !u!19719996 &684529129
+>>>>>>> e4236874ed37a3c75ea2b6afef7e7155dd235d6b
 TilemapCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11834,12 +11848,20 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
+<<<<<<< HEAD
   m_UsedByComposite: 1
+=======
+  m_UsedByComposite: 0
+>>>>>>> e4236874ed37a3c75ea2b6afef7e7155dd235d6b
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+<<<<<<< HEAD
 --- !u!1839735485 &684529131
+=======
+--- !u!1839735485 &684529130
+>>>>>>> e4236874ed37a3c75ea2b6afef7e7155dd235d6b
 Tilemap:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11847,6 +11869,7 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684529126}
   m_Enabled: 1
+<<<<<<< HEAD
   m_Tiles:
   - first: {x: -43, y: -7, z: 0}
     second:
@@ -12406,6 +12429,19 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -45, y: -7, z: 0}
   m_Size: {x: 45, y: 7, z: 1}
+=======
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+>>>>>>> e4236874ed37a3c75ea2b6afef7e7155dd235d6b
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -12434,7 +12470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720144031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12469,7 +12505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1257220479}
   - component: {fileID: 1257220478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 690c864dd65535681cc5bc296071e78a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12645,7 +12681,7 @@ Transform:
   m_GameObject: {fileID: 1424374513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.055, z: 0}
+  m_LocalPosition: {x: 0.016, y: 0.211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12661,7 +12697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632887288}
   - component: {fileID: 1632887287}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 1734e2226c3e1d07f0337c5f43240679
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13137,7 +13173,7 @@ GameObject:
   - component: {fileID: 2120400429}
   - component: {fileID: 2120400431}
   - component: {fileID: 2120400430}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Morning1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
