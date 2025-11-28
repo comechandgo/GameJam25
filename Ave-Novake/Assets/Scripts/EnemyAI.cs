@@ -8,7 +8,9 @@ public class EnemyAI : MonoBehaviour
     public Rigidbody2D enemy_rb;
     public Animator enemy_anim;
     public Transform target;
+    public GameObject target_GO;
     public GameObject[] new_target;
+    public string target_tag = "Player";
     public bool friendly_status = false;
     public bool need_to_seek = false;
     public int working_status = 1;
@@ -30,7 +32,8 @@ public class EnemyAI : MonoBehaviour
         enemy_rb = GetComponent<Rigidbody2D>();
         enemy_anim = GetComponent<Animator>();
         //hp = max_hp;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target_GO = GameObject.FindGameObjectWithTag(target_tag);
+        target = target_GO.transform;
     }
 
     // Update is called once per frame
@@ -45,8 +48,9 @@ public class EnemyAI : MonoBehaviour
     {
         if (friendly_status && need_to_seek)
         {
+            anim_key = 2;
             working_status = 0;
-            new_target = GameObject.FindGameObjectsWithTag("Hostile");
+            new_target = GameObject.FindGameObjectsWithTag(target_tag);
             if (new_target.Length >= 1)
             {
                 float distance, new_target_distance = abandon_follow_distance;
@@ -57,7 +61,8 @@ public class EnemyAI : MonoBehaviour
                         distance = Vector3.Distance(transform.position, new_target[i].transform.position);
                         if (distance < new_target_distance)
                         {
-                            target = new_target[i].transform;
+                            target_GO = new_target[i];
+                            target = target_GO.transform;
                             new_target_distance = distance;
                             need_to_seek = false;
                             if (working_status != 1)
@@ -69,7 +74,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-        if (working_status == 1)
+        if (working_status == 1 && target_GO.tag == target_tag)
         {
             float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
             float face = transform.position.x - target.position.x;
@@ -91,13 +96,17 @@ public class EnemyAI : MonoBehaviour
                     {
                         transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
                     }
-                   anim_key = 3;
+                    anim_key = 3;
                 }
                 else if (delta_distance > abandon_follow_distance)
                 {
                     anim_key = 2;
                 }
             }
+        }
+        else if (target_GO.tag != target_tag)
+        {
+            need_to_seek = true;
         }
     }
 
@@ -123,6 +132,7 @@ public class EnemyAI : MonoBehaviour
                 gameObject.layer = 7;
                 friendly_status = true;
                 need_to_seek = true;
+                target_tag = "Hostile";
                 enemy_anim.SetTrigger("hurt");
             }
             hurt = 1;

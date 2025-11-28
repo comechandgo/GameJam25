@@ -11,31 +11,23 @@ public class Zeus : MonoBehaviour
     public GameObject enemy_prefab; //预制体，在Unity内设置
     public Transform player_transform; //玩家位置，在Start中用标签Player查找
     public float spawn_distace = 15.0f; //在玩家前多少生成，其实这个也可以在Unity内设置
-    /*
     public float spawn_cd;
-    public float spawn_timer = 0.0f;
-    */
-    public int[] spawn_map = {1, 1};
-    public int[] spawn_map_copy = {1, 1};
+    public float spawn_cd_timer = 0.0f;
+    public bool spawn_available = true;
+    public int[] spawn_map;
+    //public int[] spawn_map_copy;
 
-    //音乐播放器相关变量
     void Start()
     {
-        /*
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = music_bank[0];
-        audioSource.Play();
-        */
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
-
     }
 
     void Update()
     {
+        GlobalSpawnTimer();
         ProactivelySpawn();
         TrackingSpawn(30.0f, 40.0f, spawn_map, 0);
-        //TrackingPlayMusic(10.0f, 40.0f, 1);
-        TrackingSpawn(-10.0f, 0.0f, spawn_map, 1);
+        TrackingSpawn(-10.0f, -5.0f, spawn_map, 1);
     }
 
     void ProactivelySpawn()
@@ -47,17 +39,33 @@ public class Zeus : MonoBehaviour
         }
     }
 
+    void GlobalSpawnTimer()
+    {
+        if (spawn_cd_timer > 0)
+        {
+            spawn_cd_timer -= Time.deltaTime;
+            if (spawn_cd_timer <= 0)
+            {
+                spawn_cd_timer = 0;
+                spawn_available = true;
+            }
+        }
+    }
     void TrackingSpawn(float min, float max, int[] map, int point)
     {
-        if (player_transform.position.x > min && player_transform.position.x < max && map[point] > 0)
+        if (player_transform.position.x > min && player_transform.position.x < max && map[point] > 0 && spawn_available)
         {
             Spawn();
             map[point]--;
+            spawn_available = false;
+            spawn_cd_timer = spawn_cd;
         }
-        else if (player_transform.position.x < min || player_transform.position.x > max)
+        /*
+        if (player_transform.position.x < min || player_transform.position.x > max)
         {
             map[point] = spawn_map_copy[point];
         }
+        */
     }
 
     void Spawn()
@@ -73,30 +81,4 @@ public class Zeus : MonoBehaviour
         }
         Instantiate(enemy_prefab,spawn_position,Quaternion.identity);
     }
-
-/*
-    void TrackingPlayMusic(float left_p, float right_p, int num)
-    {
-        if (player_transform.position.x >= left_p && player_transform.position.x <= right_p)
-        {
-            ChangeMusic(num);
-        }
-        else
-        {
-            audioSource.Stop();
-        }
-    }
-
-    void ChangeMusic(int x)
-    {
-        if (x > 0 && x < music_bank.Length)
-        {
-            audioSource.Stop();
-            audioSource.clip = music_bank[x];
-            audioSource.Play();
-            current_status = x;
-            audioSource.loop = (x >= 1);
-        }
-    }
-*/
 }
