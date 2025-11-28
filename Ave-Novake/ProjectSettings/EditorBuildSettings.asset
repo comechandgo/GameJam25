@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Temporary/began.unity
     guid: 06109286568c488499ccb8fa091275b6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Temporary/morning.unity
     guid: 33178f085dbea38409ab18041488078d
   - enabled: 0
