@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Test : MonoBehaviour
 {
     //移动相关
     public float player_speed;
@@ -36,13 +35,13 @@ public class NewBehaviourScript : MonoBehaviour
     public AudioClip[] music_resource;
     public int music_number = 0;
     */
-
     // Start is called before the first frame update
     void Start()
     {
         player_rb = GetComponent<Rigidbody2D>();
         player_coll = GetComponent<Collider2D>();
         player_anim = GetComponent<Animator>();
+        //player_audio = GetComponent<AudioSource>();
         player_feet = GameObject.FindGameObjectWithTag("Feet").transform;
     }
 
@@ -50,6 +49,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         PlayerAnimChanger();
+        //TrackingPlayMusic(20.0f, 40.0f, 1);
         PlayerAttack();
         PlayerMove();
     }
@@ -66,7 +66,7 @@ public class NewBehaviourScript : MonoBehaviour
             //判断朝向
             if (face != 0)
             {
-                transform.localScale = new Vector3(-face, transform.localScale.y, transform.localScale.z);
+                transform.localScale = new Vector3(-face*2.7f, transform.localScale.y, transform.localScale.z);
             }
 
             //改变水平速度
@@ -98,16 +98,17 @@ public class NewBehaviourScript : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 player_attack = 1;
-                player_anim.SetTrigger("attack");
+                //player_anim.SetTrigger("attack");
             }
             else if (Input.GetKeyDown(KeyCode.E) && player_skill_cd_timer == 0.0f)
             {
                 player_skill = 1;
                 player_skill_cd_timer = player_skill_cd;
-                player_anim.SetTrigger("skill_1");
+                //player_anim.SetTrigger("skill_1");
                 Vector3 ammo_position = transform.position + player_feet.up * 0.7f;
                 GameObject ammo = Instantiate(player_skill_ammo,ammo_position,Quaternion.identity);
                 Rigidbody2D ammo_rb = ammo.GetComponent<Rigidbody2D>();
+                Collider2D ammo_coll = ammo.GetComponent<Collider2D>();
                 if (transform.localScale.x > 0)
                 {
                     ammo_rb.velocity = new Vector2(-1.0f * (player_rb.velocity.x + player_skill_ammo_speed), ammo_rb.velocity.y);
@@ -136,7 +137,7 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 player_hp -= 5;
                 player_hurt = 1;
-                player_anim.SetTrigger("hurt");
+                //player_anim.SetTrigger("hurt");
                 player_attack = 0;
                 player_attack_timer = 0.0f;
                 player_skill = 0;
@@ -189,13 +190,13 @@ public class NewBehaviourScript : MonoBehaviour
         {
             if (player_anim_key == 2)
             {
-                player_anim.SetFloat("run",Mathf.Abs(player_speed * horizontal_num));
-                player_anim.SetBool("jump",false);
+                //player_anim.SetFloat("run",Mathf.Abs(player_speed * horizontal_num));
+                //player_anim.SetBool("jump",false);
             }
             else if (player_anim_key == 3)
             {
-                player_anim.SetFloat("run",0.0f);
-                player_anim.SetBool("jump",true);
+                //player_anim.SetFloat("run",0.0f);
+                //player_anim.SetBool("jump",true);
             }
         }
     }

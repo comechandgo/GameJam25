@@ -488,7 +488,7 @@ Transform:
   m_GameObject: {fileID: 1424374513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.055, z: 0}
+  m_LocalPosition: {x: 0, y: 0.212, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2860,7 +2860,7 @@ GameObject:
   - component: {fileID: 1709936130}
   - component: {fileID: 1709936129}
   - component: {fileID: 1709936133}
-  - component: {fileID: 1709936132}
+  - component: {fileID: 1709936135}
   - component: {fileID: 1709936134}
   m_Layer: 7
   m_Name: Player
@@ -2937,7 +2937,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 317b8365a4649ab459f6cb58ec8f9f18, type: 3}
+  m_Sprite: {fileID: -853451170966457173, guid: 41e99f46bd917b946b7b2d67839ede12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2958,51 +2958,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1424374514}
   - {fileID: 1364544204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1709936132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709936127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6bf870e281ae649a09dc93d91df99a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_speed: 7
-  player_jump_speed: 5
-  player_two_feet_on_the_ground: 0
-  horizontal_num: 0
-  player_feet: {fileID: 0}
-  ground:
-    serializedVersion: 2
-    m_Bits: 8
-  player_rb: {fileID: 0}
-  player_coll: {fileID: 0}
-  player_anim: {fileID: 0}
-  player_hurt: 0
-  player_hurt_timer: 0
-  player_hurt_duration: 0.5
-  player_attack: 0
-  player_attack_timer: 0
-  player_attack_duration: 0.7
-  player_skill: 0
-  player_skill_timer: 0
-  player_skill_duration: 0.5
-  player_skill_cd: 7
-  player_skill_cd_timer: 0
-  player_anim_key: 2
-  player_skill_ammo: {fileID: 3633768820437125374, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
-  player_skill_ammo_speed: 10
-  player_hp: 100
 --- !u!70 &1709936133
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3035,8 +2997,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012106657, y: 0.63614124}
-  m_Size: {x: 0.47727, y: 1.1547762}
+  m_Offset: {x: 0.004993865, y: 0.4956609}
+  m_Size: {x: 0.3634633, y: 0.5964113}
   m_Direction: 0
 --- !u!95 &1709936134
 Animator:
@@ -3059,6 +3021,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1709936135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709936127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2aa14a7965809c43a039842ad97bdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_speed: 7
+  player_jump_speed: 5
+  player_two_feet_on_the_ground: 0
+  horizontal_num: 0
+  player_feet: {fileID: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 8
+  player_rb: {fileID: 0}
+  player_coll: {fileID: 0}
+  player_anim: {fileID: 0}
+  player_hurt: 0
+  player_hurt_timer: 0
+  player_hurt_duration: 0.5
+  player_attack: 0
+  player_attack_timer: 0
+  player_attack_duration: 0.7
+  player_skill: 0
+  player_skill_timer: 0
+  player_skill_duration: 0.5
+  player_skill_cd: 7
+  player_skill_cd_timer: 0
+  player_anim_key: 2
+  player_skill_ammo: {fileID: 3633768820437125374, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
+  player_skill_ammo_speed: 10
+  player_hp: 100
 --- !u!1 &1942840352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,10 +3223,8 @@ MonoBehaviour:
   bgms:
   - {fileID: 8300000, guid: 53979b53efda50b478cbbe5744afe18c, type: 3}
   - {fileID: 8300000, guid: bd24cec0956dd1245a8ecd2458288298, type: 3}
-  - {fileID: 8300000, guid: b36aef8167bd069409a0c0704d09781a, type: 3}
-  - {fileID: 8300000, guid: 6c27df67470791c48a20139974aba4c5, type: 3}
-  - {fileID: 8300000, guid: f7c4ef865620c524f9e2f021b034f0ec, type: 3}
-  banned_group: 0000000002000000
+  - {fileID: 8300000, guid: 47d71f593f5a8984caad05eeb3017e10, type: 3}
+  banned_group: 00000000
   bgm_source: {fileID: 0}
 --- !u!4 &2091949078
 Transform:
