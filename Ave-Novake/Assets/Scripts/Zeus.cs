@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -16,15 +18,23 @@ public class Zeus : MonoBehaviour
     public int[] spawn_map = {1, 1};
     public int[] spawn_map_copy = {1, 1};
 
+    //音乐播放器相关变量
     void Start()
     {
+        /*
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = music_bank[0];
+        audioSource.Play();
+        */
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
     void Update()
     {
         ProactivelySpawn();
         TrackingSpawn(30.0f, 40.0f, spawn_map, 0);
+        //TrackingPlayMusic(10.0f, 40.0f, 1);
         TrackingSpawn(-10.0f, 0.0f, spawn_map, 1);
     }
 
@@ -63,4 +73,30 @@ public class Zeus : MonoBehaviour
         }
         Instantiate(enemy_prefab,spawn_position,Quaternion.identity);
     }
+
+/*
+    void TrackingPlayMusic(float left_p, float right_p, int num)
+    {
+        if (player_transform.position.x >= left_p && player_transform.position.x <= right_p)
+        {
+            ChangeMusic(num);
+        }
+        else
+        {
+            audioSource.Stop();
+        }
+    }
+
+    void ChangeMusic(int x)
+    {
+        if (x > 0 && x < music_bank.Length)
+        {
+            audioSource.Stop();
+            audioSource.clip = music_bank[x];
+            audioSource.Play();
+            current_status = x;
+            audioSource.loop = (x >= 1);
+        }
+    }
+*/
 }

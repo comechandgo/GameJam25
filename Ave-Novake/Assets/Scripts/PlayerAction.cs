@@ -31,6 +31,9 @@ public class NewBehaviourScript : MonoBehaviour
     public float player_skill_ammo_speed;
     public float player_hp;
     //public float player_max_hp;
+    public AudioSource player_audio;
+    public AudioClip[] music_resource;
+    public int music_number = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,7 @@ public class NewBehaviourScript : MonoBehaviour
         player_rb = GetComponent<Rigidbody2D>();
         player_coll = GetComponent<Collider2D>();
         player_anim = GetComponent<Animator>();
+        player_audio = GetComponent<AudioSource>();
         player_feet = GameObject.FindGameObjectWithTag("Feet").transform;
     }
 
@@ -45,6 +49,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         PlayerAnimChanger();
+        TrackingPlayMusic(20.0f, 40.0f, 1);
         PlayerAttack();
         PlayerMove();
     }
@@ -194,5 +199,25 @@ public class NewBehaviourScript : MonoBehaviour
                 player_anim.SetBool("jump",true);
             }
         }
+    }
+    
+    void TrackingPlayMusic(float left_p, float right_p, int num)
+    {
+        if (transform.position.x >= left_p && transform.position.x <= right_p)
+        {
+            ChangeMusic(num);
+        }
+        else if (music_number == num)
+        {
+            player_audio.Stop();
+        }
+    }
+    void ChangeMusic(int x)
+    {
+        player_audio.Stop();
+        player_audio.clip = music_resource[x];
+        player_audio.Play();
+        music_number = x;
+        player_audio.loop = true;
     }
 }
