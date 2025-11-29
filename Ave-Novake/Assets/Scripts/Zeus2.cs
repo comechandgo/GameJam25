@@ -35,10 +35,12 @@ public class Zeus2 : MonoBehaviour
         //TrackingSpawn(-3.0f, 10.0f, spawn_map, 0, 0);
         //TrackingSpawn(12.0f, 20.0f, spawn_map, 1, 1);
         ChangeMusic();
-        TrackPlayerForMusic(-5.0f, 0.0f, 1);
-        TrackPlayerForMusic(0.0f, 20.0f, 3);
-        TrackPlayerForMusic(20.0f,30.0f, 4);
-        TrackPlayerForMusic(35.0f,50.0f, 6);
+        TrackPlayerForMusic(-30.0f, -20.0f, 0);
+        TrackPlayerForMusic(-20.0f, 0.0f, 1);
+        TrackPlayerForMusic(0.0f,10.0f, 2);
+        TrackPlayerForMusic(10.0f,20.0f, 3);
+        TrackPlayerForMusic(20.0f,35.0f, 4);
+        TrackPlayerForMusic(35.0f,55.0f, 5);
     }
 
     void ProactivelySpawn()
@@ -136,7 +138,7 @@ public class Zeus2 : MonoBehaviour
                 bgm_source.loop = true;
             }
         }
-        else if (playing_bgm_num > n && !in_the_banned_group)
+        else if (playing_bgm_num >= n && !in_the_banned_group)
         {
             bgm_source.loop = true;
         }
