@@ -32,21 +32,24 @@ public class Zeus2 : MonoBehaviour
     {
         GlobalSpawnTimer();
         ProactivelySpawn();
-        //TrackingSpawn(-3.0f, 10.0f, spawn_map, 0, 0);
-        //TrackingSpawn(12.0f, 20.0f, spawn_map, 1, 1);
+        TrackingSpawn(-20.0f, 0.0f, spawn_map, 0, 0);
+        TrackingSpawn(0.0f, 20.0f, spawn_map, 1, 1);
+        TrackingSpawn(20.0f, 40.0f, spawn_map, 2, 0);
+        TrackingSpawn(40.0f, 55.0f, spawn_map, 3, 1);
         ChangeMusic();
         TrackPlayerForMusic(-30.0f, -20.0f, 0);
         TrackPlayerForMusic(-20.0f, 0.0f, 1);
         TrackPlayerForMusic(0.0f,10.0f, 2);
         TrackPlayerForMusic(10.0f,20.0f, 3);
-        TrackPlayerForMusic(20.0f,35.0f, 4);
-        TrackPlayerForMusic(35.0f,55.0f, 5);
+        TrackPlayerForMusic(20.0f,40.0f, 4);
+        TrackPlayerForMusic(40.0f,55.0f, 5);
+        Esc();
     }
 
     void ProactivelySpawn()
     {
         
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Spawn(0);
         }
@@ -141,6 +144,14 @@ public class Zeus2 : MonoBehaviour
         else if (playing_bgm_num >= n && !in_the_banned_group)
         {
             bgm_source.loop = true;
+        }
+    }
+
+    void Esc()
+    {
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            Application.Quit();
         }
     }
 }

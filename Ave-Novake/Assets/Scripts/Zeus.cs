@@ -44,6 +44,7 @@ public class Zeus : MonoBehaviour
         TrackPlayerForMusic(20.0f,30.0f, 4);
         TrackPlayerForMusic(35.0f,50.0f, 6);
         ChangeScene();
+        Esc();
     }
 
     void ProactivelySpawn()
@@ -151,7 +152,15 @@ public class Zeus : MonoBehaviour
     {
         if (player_transform.position.x >= 40.0f && Input.GetKeyDown(KeyCode.F))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
+        }
+    }
+
+    void Esc()
+    {
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            Application.Quit();
         }
     }
 }

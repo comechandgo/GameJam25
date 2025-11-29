@@ -211,7 +211,8 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else
         {
-            player_hp = 0;
+            transform.position = new Vector3(-22.0f, -4.0f, 0.0f);
+            player_hp = 100;
         }
     }
 }

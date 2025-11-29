@@ -21,12 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Temporary/night.unity
     guid: 57d2eff51d3a4fb4ab1aec8f9e4fe39c
   - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 9140e97c823dd804c9793b352057275a
+  - enabled: 1
     path: Assets/Scenes/morning.unity
     guid: b3c3c42691d81d346a4259a91a319cd8
   - enabled: 1
     path: Assets/Scenes/afternoon.unity
     guid: f0cabd6d40460c945ad7c45f0390050b
-  - enabled: 1
-    path: Assets/Scenes/Start.unity
-    guid: 9140e97c823dd804c9793b352057275a
   m_configObjects: {}
