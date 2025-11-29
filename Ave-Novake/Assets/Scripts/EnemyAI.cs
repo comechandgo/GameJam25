@@ -53,7 +53,6 @@ public class EnemyAI : MonoBehaviour
             {
                 if (target_ai.hp <= 0)
                 {
-                    working_status = 0;
                     need_to_seek = true;
                     target_GO = null;
                     target = null;
@@ -119,9 +118,12 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
             }
-            else if (target_GO.tag != target_tag)
+            else if (!need_to_seek)
             {
-                need_to_seek = true;
+                if (target_GO.tag != target_tag)
+                {
+                    need_to_seek = true;
+                }
             }
         }
         else

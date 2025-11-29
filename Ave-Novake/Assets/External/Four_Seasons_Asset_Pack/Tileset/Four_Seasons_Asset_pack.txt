@@ -1,0 +1,34 @@
+Four Seasons asset pack
+Author: NonokaATM
+File Type: PNG
+Tile Size: 16x16 px
+Total Tiles: 208 tiles
+Background size: 640х360 px
+
+Usage Notes:
+Designed for platformer games
+- Includes:
+ Terrain Tiles: grass, dirt, stone, rock, stalactites, snow, water, acid, lava, ice;
+ Vegetation: trees, bushes, dead trees, flowers, leaves, mushrooms;
+ Rock Formations: rocks, thorns, spines, icicles, snowdrifts;
+ Decorations & Objects: flags, signs, boxes, barrels, chests, ladder, torches, pedestal, graves;
+ Collectibles: coins;
+ Backgrounds: field, autumn, snowy forest, green mountains;
+
+Compatible with:
+- Godot
+- Unity (with Tilemap system)
+- Any engine that supports 16x16 PNG tiles
+
+License:
+This tileset is for commercial and personal use.
+You may use it in games, videos, or other creative projects.
+Credit is appreciated but not required.
+You may not resell or redistribute the tileset, modified or unmodified, as your own.
+Do not share this file or as part of other asset packs.
+
+Contact:  
+Email: alnonoka19@gmail.com
+Discord: nonoka0841
+
+Thank you so much for your support!
