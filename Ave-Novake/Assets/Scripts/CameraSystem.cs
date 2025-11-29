@@ -6,13 +6,15 @@ public class CameraSystem : MonoBehaviour
 {
     public Transform player_target;
     public float move_time;
+    public float l_b;
+    public float r_b;
     void Start()
     {
         player_target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void Update()
     {
-        CameraMoving(-5.0f, 40.0f);
+        CameraMoving(l_b, r_b);
     }
 
     void CameraMoving(float left_b, float right_b)

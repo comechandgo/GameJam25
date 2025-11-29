@@ -1,12 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class Zeus : MonoBehaviour
+public class Zeus2 : MonoBehaviour
 {
     public GameObject[] enemy_prefab; //预制体，在Unity内设置
     public Transform player_transform; //玩家位置，在Start中用标签Player查找
@@ -21,7 +17,7 @@ public class Zeus : MonoBehaviour
     public AudioSource bgm_source;
     private int playing_bgm_num = 0;
     private bool in_the_banned_group = false;
-
+    // Start is called before the first frame update
     void Start()
     {
         bgm_source = GetComponent<AudioSource>();
@@ -31,12 +27,13 @@ public class Zeus : MonoBehaviour
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    // Update is called once per frame
     void Update()
     {
         GlobalSpawnTimer();
         ProactivelySpawn();
-        TrackingSpawn(-3.0f, 10.0f, spawn_map, 0, 0);
-        TrackingSpawn(12.0f, 20.0f, spawn_map, 1, 1);
+        //TrackingSpawn(-3.0f, 10.0f, spawn_map, 0, 0);
+        //TrackingSpawn(12.0f, 20.0f, spawn_map, 1, 1);
         ChangeMusic();
         TrackPlayerForMusic(-5.0f, 0.0f, 1);
         TrackPlayerForMusic(0.0f, 20.0f, 3);
