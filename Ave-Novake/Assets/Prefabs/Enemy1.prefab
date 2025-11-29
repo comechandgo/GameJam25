@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 6552367505858967340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.1, y: -1.55, z: 0}
+  m_LocalPosition: {x: 24.27, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f2ed27d6c1c3ccc48959bcca269d88f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55e1a3402e3b56c469edefb26e0eff80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,9 +225,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019293308, y: 0.63492846}
-  m_Size: {x: 0.3859787, y: 1.1870055}
-  m_Direction: 0
+  m_Offset: {x: -0.21996784, y: -0.079385564}
+  m_Size: {x: 2.4145238, y: 1.2563683}
+  m_Direction: 1
 --- !u!114 &1058287884911303924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,11 +245,13 @@ MonoBehaviour:
   target: {fileID: 0}
   target_GO: {fileID: 0}
   new_target: []
+  target_ai: {fileID: 0}
   target_tag: Player
   friendly_status: 0
   need_to_seek: 0
   working_status: 1
   hp: 100
+  destroy_timer: 3
   enemy_speed: 5
   follow_distance: 0.7
   abandon_follow_distance: 10

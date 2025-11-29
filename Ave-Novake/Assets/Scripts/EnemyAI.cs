@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -97,6 +98,16 @@ public class EnemyAI : MonoBehaviour
                     if (delta_distance < follow_distance && attack == 0)
                     {
                         attack = 1;
+                        /*
+                        if (face > 0)
+                        {
+                            enemy_anim.SetBool("Left",true);
+                        }
+                        else
+                        {
+                            enemy_anim.SetBool("Left",false);
+                        }
+                        */
                         enemy_anim.SetTrigger("attack");
                     }
                     else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
@@ -106,7 +117,7 @@ public class EnemyAI : MonoBehaviour
                         {
                             transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.z);
                         }
-                     else
+                        else
                         {
                             transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.z);
                         }
