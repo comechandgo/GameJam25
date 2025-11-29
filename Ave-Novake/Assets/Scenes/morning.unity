@@ -130,21 +130,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1058287884911303924, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
+      propertyPath: follow_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272958916128929841, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
+      propertyPath: m_Size.x
+      value: 0.29121017
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272958916128929841, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32500374
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272958916128929841, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.2627296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272958916128929841, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.16195107
+      objectReference: {fileID: 0}
     - target: {fileID: 6552367505858967340, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
-    - target: {fileID: 6552367505858967340, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7036636353018552337, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.1
+      value: 24.27
       objectReference: {fileID: 0}
     - target: {fileID: 7036636353018552337, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.55
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7036636353018552337, guid: 0e09692192b0c3f498c2ec19cb3e10da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20988,7 +21004,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f2ed27d6c1c3ccc48959bcca269d88f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55e1a3402e3b56c469edefb26e0eff80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -21008,7 +21024,7 @@ Transform:
   m_GameObject: {fileID: 1205604614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.01, y: -1.8, z: 0}
+  m_LocalPosition: {x: 4.9, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
