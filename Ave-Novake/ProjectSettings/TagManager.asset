@@ -10,6 +10,7 @@ TagManager:
   - Hostile Weapon
   - Skill
   - Allies
+  - Boss
   layers:
   - Default
   - TransparentFX
