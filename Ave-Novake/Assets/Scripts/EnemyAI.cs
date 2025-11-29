@@ -48,11 +48,11 @@ public class EnemyAI : MonoBehaviour
     //行动系统
     void EnemyAction()
     {
-        if (hp > 0)
+        if (hp > 0.0f)
         {
             if (friendly_status && !need_to_seek)
             {
-                if (target_ai.hp <= 0)
+                if (target_ai.hp <= 0.0f)
                 {
                     need_to_seek = true;
                     target_GO = null;
@@ -151,11 +151,11 @@ public class EnemyAI : MonoBehaviour
     //受击系统
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hp >= 0)
+        if (hp >= 0.0f)
         {
             if (other.CompareTag("Weapon") && !friendly_status)
             {
-                InjuryJudgment();
+                InjuryJudgment(10.0f);
             }
             else if (other.CompareTag("Skill"))
             {
@@ -169,7 +169,7 @@ public class EnemyAI : MonoBehaviour
             }
             if (other.CompareTag("Hostile Weapon"))
             {
-                InjuryJudgment();
+                InjuryJudgment(5.0f);
             }
             hurt = 1;
             attack = 0;
@@ -178,10 +178,10 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void InjuryJudgment()
+    void InjuryJudgment(float m_hp)
     {
-        hp -= 5;
-        if (hp > 0)
+        hp -= m_hp;
+        if (hp > 0.0f)
         {
             enemy_anim.SetTrigger("hurt");
         }
