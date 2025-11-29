@@ -38,9 +38,10 @@ public class Zeus : MonoBehaviour
         TrackingSpawn(-3.0f, 10.0f, spawn_map, 0, 0);
         TrackingSpawn(12.0f, 20.0f, spawn_map, 1, 1);
         ChangeMusic();
-        TrackPlayerForMusic(0.0f, 12.0f, 1);
-        TrackPlayerForMusic(13.0f, 30.0f, 3);
-        TrackPlayerForMusic(35.0f, 50.0f, 4);
+        TrackPlayerForMusic(-5.0f, 0.0f, 1);
+        TrackPlayerForMusic(0.0f, 20.0f, 3);
+        TrackPlayerForMusic(20.0f,30.0f, 4);
+        TrackPlayerForMusic(35.0f,50.0f, 6);
     }
 
     void ProactivelySpawn()
@@ -126,7 +127,7 @@ public class Zeus : MonoBehaviour
 
     void TrackPlayerForMusic(float left_b, float right_b, int n)
     {
-        if (player_transform.position.x >= left_b && player_transform.position.x <= right_b && playing_bgm_num < n)
+        if (player_transform.position.x > left_b && player_transform.position.x < right_b && playing_bgm_num < n)
         {
             bgm_source.loop = false;
             if (!bgm_source.isPlaying)

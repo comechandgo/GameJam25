@@ -331,6 +331,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b36aef8167bd069409a0c0704d09781a, type: 3}
   - {fileID: 8300000, guid: 6c27df67470791c48a20139974aba4c5, type: 3}
   - {fileID: 8300000, guid: f7c4ef865620c524f9e2f021b034f0ec, type: 3}
+  - {fileID: 8300000, guid: 8fcd2ceef667b464fb60f2c82f4ada68, type: 3}
+  - {fileID: 8300000, guid: 72fdb3c1e8993eb459cbe1944834e02f, type: 3}
   banned_group: 0000000002000000
   bgm_source: {fileID: 0}
 --- !u!4 &352124852
@@ -21214,8 +21216,8 @@ Transform:
   m_GameObject: {fileID: 1620454831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.27, y: 0.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -11.35, y: 0.18, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 171948629}
@@ -21507,11 +21509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762647724034266185, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.86
+      value: 20.87
       objectReference: {fileID: 0}
     - target: {fileID: 5762647724034266185, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.6
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 5762647724034266185, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
       propertyPath: m_LocalPosition.z
