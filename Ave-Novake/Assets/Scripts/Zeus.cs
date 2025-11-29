@@ -5,6 +5,7 @@ using System.Data.SqlTypes;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Zeus : MonoBehaviour
 {
@@ -42,12 +43,13 @@ public class Zeus : MonoBehaviour
         TrackPlayerForMusic(0.0f, 20.0f, 3);
         TrackPlayerForMusic(20.0f,30.0f, 4);
         TrackPlayerForMusic(35.0f,50.0f, 6);
+        ChangeScene();
     }
 
     void ProactivelySpawn()
     {
         
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Spawn(0);
         }
@@ -142,6 +144,14 @@ public class Zeus : MonoBehaviour
         else if (playing_bgm_num > n && !in_the_banned_group)
         {
             bgm_source.loop = true;
+        }
+    }
+
+    void ChangeScene()
+    {
+        if (player_transform.position.x >= 40.0f && Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene(1);
         }
     }
 }
