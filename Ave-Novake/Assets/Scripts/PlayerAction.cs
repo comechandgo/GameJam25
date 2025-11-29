@@ -52,6 +52,7 @@ public class NewBehaviourScript : MonoBehaviour
         PlayerAnimChanger();
         PlayerAttack();
         PlayerMove();
+        HPLine();
     }
 
     //移动（运动）函数
@@ -197,6 +198,20 @@ public class NewBehaviourScript : MonoBehaviour
                 player_anim.SetFloat("run",0.0f);
                 player_anim.SetBool("jump",true);
             }
+        }
+    }
+
+    void HPLine()
+    {
+        if (player_hp >= 0)
+        {
+            float new_hp = player_hp / 100.0f;
+            Transform hp_line = transform.Find("hp");
+            hp_line.localScale = new Vector3(new_hp, hp_line.localScale.y, hp_line.localScale.z);
+        }
+        else
+        {
+            player_hp = 0;
         }
     }
 }

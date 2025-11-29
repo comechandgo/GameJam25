@@ -141,7 +141,7 @@ public class Zeus : MonoBehaviour
                 bgm_source.loop = true;
             }
         }
-        else if (playing_bgm_num > n && !in_the_banned_group)
+        else if (playing_bgm_num >= n && !in_the_banned_group)
         {
             bgm_source.loop = true;
         }

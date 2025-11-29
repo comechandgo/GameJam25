@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -98,16 +99,6 @@ public class EnemyAI : MonoBehaviour
                     if (delta_distance < follow_distance && attack == 0)
                     {
                         attack = 1;
-                        /*
-                        if (face > 0)
-                        {
-                            enemy_anim.SetBool("Left",true);
-                        }
-                        else
-                        {
-                            enemy_anim.SetBool("Left",false);
-                        }
-                        */
                         enemy_anim.SetTrigger("attack");
                     }
                     else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
@@ -161,6 +152,7 @@ public class EnemyAI : MonoBehaviour
             {
                 gameObject.tag = "Allies";
                 transform.Find("enemy attack").tag = "Weapon";
+                transform.Find("hp").GetComponent<SpriteRenderer>().color = Color.green;
                 gameObject.layer = 7;
                 friendly_status = true;
                 need_to_seek = true;
@@ -181,13 +173,18 @@ public class EnemyAI : MonoBehaviour
     void InjuryJudgment(float m_hp)
     {
         hp -= m_hp;
+        Transform hp_line = transform.Find("hp");
         if (hp > 0.0f)
         {
             enemy_anim.SetTrigger("hurt");
+            float new_hp = hp / 100.0f;
+            hp_line.localScale = new Vector3(new_hp, hp_line.localScale.y, hp_line.localScale.z);
         }
         else
         {
+            hp_line.localScale = new Vector3(0, hp_line.localScale.y, hp_line.localScale.z);
             enemy_anim.SetBool("dead",true);
+            hp = 0.0f;
         }
     }
 
