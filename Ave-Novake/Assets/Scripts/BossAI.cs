@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossAI : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class BossAI : MonoBehaviour
     //public bool friendly_status = false;
     //public bool need_to_seek = false;
     public int working_status = 1;
+    public float hit_cd;
     public float hp;
     public float destroy_timer = 3.0f;
     public float enemy_speed;
@@ -101,6 +103,7 @@ public class BossAI : MonoBehaviour
                     if (delta_distance < follow_distance && attack == 0)
                     {
                         player_script.player_hp -= 20.0f;
+                        attack = 1;
                     }
                     else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
                     {
@@ -137,7 +140,7 @@ public class BossAI : MonoBehaviour
             if (destroy_timer <= 0)
             {
                 destroy_timer = 0.0f;
-                Destroy(gameObject);
+                SceneManager.LoadScene(0);
             }
         }
     }

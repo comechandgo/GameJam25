@@ -30534,7 +30534,8 @@ MonoBehaviour:
   player_script: {fileID: 0}
   target_tag: Player
   working_status: 1
-  hp: 200
+  hit_cd: 0
+  hp: 100
   destroy_timer: 3
   enemy_speed: 5
   follow_distance: 5
@@ -30545,7 +30546,7 @@ MonoBehaviour:
   hurt_duration: 0.5
   attack: 0
   attack_timer: 0
-  attack_duration: 1.05
+  attack_duration: 12
 --- !u!95 &1986736507
 Animator:
   serializedVersion: 5
