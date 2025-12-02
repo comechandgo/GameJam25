@@ -11,6 +11,7 @@ TagManager:
   - Skill
   - Allies
   - Boss
+  - Door
   layers:
   - Default
   - TransparentFX

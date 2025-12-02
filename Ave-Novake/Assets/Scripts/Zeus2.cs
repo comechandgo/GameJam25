@@ -23,7 +23,6 @@ public class Zeus2 : MonoBehaviour
         bgm_source = GetComponent<AudioSource>();
         bgm_source.clip = bgms[0];
         bgm_source.Play();
-        //FixedPointSpawnOneEnemy(30.0f, 0.0f);
         player_transform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -35,7 +34,7 @@ public class Zeus2 : MonoBehaviour
         TrackingSpawn(-20.0f, 0.0f, spawn_map, 0, 0);
         TrackingSpawn(0.0f, 20.0f, spawn_map, 1, 1);
         TrackingSpawn(20.0f, 40.0f, spawn_map, 2, 0);
-        TrackingSpawn(40.0f, 55.0f, spawn_map, 3, 1);
+        //TrackingSpawn(40.0f, 55.0f, spawn_map, 3, 1);
         ChangeMusic();
         TrackPlayerForMusic(-30.0f, -20.0f, 0);
         TrackPlayerForMusic(-20.0f, 0.0f, 1);

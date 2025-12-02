@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject[] new_target;
     public EnemyAI target_ai;
     public string target_tag = "Player";
+    public float target_hp;
     public bool friendly_status = false;
     public bool need_to_seek = false;
     public int working_status = 1;
@@ -27,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     public int attack = 0;
     public float attack_timer = 0.0f;
     public float attack_duration;
+    public Collider2D door_coll;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         enemy_anim = GetComponent<Animator>();
         target_GO = GameObject.FindGameObjectWithTag(target_tag);
         target = target_GO.transform;
+        door_coll = GameObject.FindGameObjectWithTag("Door").GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -49,6 +52,14 @@ public class EnemyAI : MonoBehaviour
     {
         if (hp > 0.0f)
         {
+            if (friendly_status && !door_coll.enabled)
+            {
+                target_tag = "Boss";
+                need_to_seek = true;
+                target_GO = null;
+                target = null;
+                target_ai = null;
+            }
             if (friendly_status && !need_to_seek)
             {
                 if (target_ai.hp <= 0.0f)
@@ -69,7 +80,15 @@ public class EnemyAI : MonoBehaviour
                     float distance, new_target_distance = abandon_follow_distance;
                     for (int i = 0; i < new_target.Length; i++)
                     {
-                        if (new_target[i] != null && new_target[i].GetComponent<EnemyAI>().hp > 0)
+                        if (target_tag == "Hostile")
+                        {
+                            target_hp = new_target[i].GetComponent<EnemyAI>().hp;
+                        }
+                        else if (target_tag == "Boss")
+                        {
+                            target_hp = new_target[i].GetComponent<BossAI>().hp;
+                        }
+                        if (new_target[i] != null && target_hp > 0.0f)
                         {
                             distance = Vector3.Distance(transform.position, new_target[i].transform.position);
                             if (distance < new_target_distance)

@@ -53,47 +53,6 @@ public class BossAI : MonoBehaviour
     {
         if (hp > 0.0f)
         {
-            /*
-            if (friendly_status && !need_to_seek)
-            {
-                if (target_ai.hp <= 0.0f)
-                {
-                    need_to_seek = true;
-                    target_GO = null;
-                    target = null;
-                    target_ai = null;
-                }
-            }
-            if (friendly_status && need_to_seek)
-            {
-                anim_key = 2;
-                working_status = 0;
-                new_target = GameObject.FindGameObjectsWithTag(target_tag);
-                if (new_target.Length >= 1)
-                {
-                    float distance, new_target_distance = abandon_follow_distance;
-                    for (int i = 0; i < new_target.Length; i++)
-                    {
-                        if (new_target[i] != null && new_target[i].GetComponent<EnemyAI>().hp > 0)
-                        {
-                            distance = Vector3.Distance(transform.position, new_target[i].transform.position);
-                            if (distance < new_target_distance)
-                            {
-                                target_GO = new_target[i];
-                                target_ai = target_GO.GetComponent<EnemyAI>();
-                                target = target_GO.transform;
-                                new_target_distance = distance;
-                                need_to_seek = false;
-                                if (working_status != 1)
-                                {
-                                    working_status = 1;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            */
             if (working_status == 1 && target_GO.tag == target_tag)
             {
                 float delta_distance = Mathf.Abs(transform.position.x - target.position.x);
@@ -103,6 +62,7 @@ public class BossAI : MonoBehaviour
                     if (delta_distance < follow_distance && attack == 0)
                     {
                         player_script.player_hp -= 20.0f;
+                        enemy_anim.SetTrigger("attack");
                         attack = 1;
                     }
                     else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
@@ -124,15 +84,6 @@ public class BossAI : MonoBehaviour
                     }
                 }
             }
-            /*
-            else if (!need_to_seek)
-            {
-                if (target_GO.tag != target_tag)
-                {
-                    need_to_seek = true;
-                }
-            }
-            */
         }
         else
         {
@@ -154,19 +105,6 @@ public class BossAI : MonoBehaviour
             {
                 InjuryJudgment(10.0f);
             }
-            /*
-            else if (other.CompareTag("Skill"))
-            {
-                gameObject.tag = "Allies";
-                transform.Find("enemy attack").tag = "Weapon";
-                transform.Find("hp").GetComponent<SpriteRenderer>().color = Color.green;
-                gameObject.layer = 7;
-                friendly_status = true;
-                need_to_seek = true;
-                target_tag = "Hostile";
-                enemy_anim.SetTrigger("hurt");
-            }
-            */
             if (other.CompareTag("Hostile Weapon"))
             {
                 InjuryJudgment(5.0f);

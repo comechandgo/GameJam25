@@ -453,6 +453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319037e0245032440a9819d8878841f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min_stby_timer: 0
+  min_stby: 5
+  waiting: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

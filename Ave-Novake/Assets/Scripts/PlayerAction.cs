@@ -30,6 +30,8 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject player_skill_ammo;
     public float player_skill_ammo_speed;
     public float player_hp;
+    public float respawn_x;
+    public float respawn_y;
     //public float player_max_hp;
     /*
     public AudioSource player_audio;
@@ -211,7 +213,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(-22.0f, -4.0f, 0.0f);
+            transform.position = new Vector3(respawn_x, respawn_y, 0.0f);
             player_hp = 100;
         }
     }

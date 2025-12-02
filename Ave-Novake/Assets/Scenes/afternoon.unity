@@ -2177,6 +2177,8 @@ MonoBehaviour:
   player_skill_ammo: {fileID: 3633768820437125374, guid: 7ebcf3fd5f2043b4c9f459cc14c9a2d0, type: 3}
   player_skill_ammo_speed: 10
   player_hp: 100
+  respawn_x: -22
+  respawn_y: -4
 --- !u!70 &534739074
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2323,7 +2325,7 @@ GameObject:
   - component: {fileID: 568535413}
   m_Layer: 0
   m_Name: "\u5F00\u95E8"
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26406,11 +26408,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1848673664400727250, guid: aa619d3917facca46b1fcc1223ea3fb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.62
+      value: 26.44
       objectReference: {fileID: 0}
     - target: {fileID: 1848673664400727250, guid: aa619d3917facca46b1fcc1223ea3fb5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.36
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 1848673664400727250, guid: aa619d3917facca46b1fcc1223ea3fb5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29038,7 +29040,7 @@ MonoBehaviour:
   spawn_cd: 5
   spawn_cd_timer: 0
   spawn_available: 1
-  spawn_map: 05000000050000000a0000000a000000
+  spawn_map: 020000000200000004000000
   bgms:
   - {fileID: 8300000, guid: 7e3f6fd938aaae8409dac988a272fe7f, type: 3}
   - {fileID: 8300000, guid: fa56429ed087cf64a86a4b7603a0adf5, type: 3}
@@ -30691,7 +30693,7 @@ Transform:
   m_GameObject: {fileID: 1986736505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.54, y: -3.74, z: 0}
+  m_LocalPosition: {x: 44.52, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
