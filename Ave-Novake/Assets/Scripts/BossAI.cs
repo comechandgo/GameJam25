@@ -10,14 +10,11 @@ public class BossAI : MonoBehaviour
     public Transform target;
     public GameObject target_GO;
     public NewBehaviourScript player_script;
-    //public GameObject[] new_target;
-    //public EnemyAI target_ai;
     public string target_tag = "Player";
-    //public bool friendly_status = false;
-    //public bool need_to_seek = false;
     public int working_status = 1;
     public float hit_cd;
     public float hp;
+    public Collider2D door_protect;
     public float destroy_timer = 3.0f;
     public float enemy_speed;
     public float follow_distance;
@@ -29,7 +26,6 @@ public class BossAI : MonoBehaviour
     public int attack = 0;
     public float attack_timer = 0.0f;
     public float attack_duration;
-    //public float boss_skill
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +35,7 @@ public class BossAI : MonoBehaviour
         target_GO = GameObject.FindGameObjectWithTag(target_tag);
         target = target_GO.transform;
         player_script = target_GO.GetComponent<NewBehaviourScript>();
+        door_protect = GameObject.FindGameObjectWithTag("Door").GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -99,7 +96,7 @@ public class BossAI : MonoBehaviour
     //受击系统
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hp >= 0.0f)
+        if (hp >= 0.0f && !door_protect.enabled)
         {
             if (other.CompareTag("Weapon"))
             {

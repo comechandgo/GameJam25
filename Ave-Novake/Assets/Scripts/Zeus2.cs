@@ -148,7 +148,7 @@ public class Zeus2 : MonoBehaviour
 
     void Esc()
     {
-        if (Input.GetKeyDown(KeyCode.End))
+        if (Input.GetKeyDown(KeyCode.End) || Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
