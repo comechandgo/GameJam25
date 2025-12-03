@@ -26406,6 +26406,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 410467585773879778, guid: aa619d3917facca46b1fcc1223ea3fb5, type: 3}
+      propertyPath: need_to_seek_door
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1848673664400727250, guid: aa619d3917facca46b1fcc1223ea3fb5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.44
@@ -27896,6 +27900,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2795170087266178426, guid: 5d10f516b64f12e4ea53f40412585022, type: 3}
+      propertyPath: need_to_seek_door
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5635080003484642388, guid: 5d10f516b64f12e4ea53f40412585022, type: 3}
       propertyPath: m_Name
       value: Enemy Mouse
@@ -29328,7 +29336,7 @@ Transform:
   m_GameObject: {fileID: 1579181242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.7, z: 0}
+  m_LocalPosition: {x: 0, y: -2.7, z: -0.1}
   m_LocalScale: {x: 5, y: 0.37230083, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30538,6 +30546,7 @@ MonoBehaviour:
   working_status: 1
   hit_cd: 0
   hp: 100
+  door_protect: {fileID: 0}
   destroy_timer: 3
   enemy_speed: 5
   follow_distance: 5
@@ -30549,6 +30558,8 @@ MonoBehaviour:
   attack: 0
   attack_timer: 0
   attack_duration: 12
+  boss_level: 1
+  enemy_prefab: {fileID: 0}
 --- !u!95 &1986736507
 Animator:
   serializedVersion: 5

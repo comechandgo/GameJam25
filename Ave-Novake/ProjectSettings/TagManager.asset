@@ -12,6 +12,7 @@ TagManager:
   - Allies
   - Boss
   - Door
+  - Zeus
   layers:
   - Default
   - TransparentFX

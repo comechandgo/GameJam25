@@ -26,6 +26,8 @@ public class BossAI : MonoBehaviour
     public int attack = 0;
     public float attack_timer = 0.0f;
     public float attack_duration;
+    public int boss_level;
+    public GameObject enemy_prefab;
 
     // Start is called before the first frame update
     void Start()
@@ -56,13 +58,24 @@ public class BossAI : MonoBehaviour
                 float face = transform.position.x - target.position.x;
                 if (hurt == 0)
                 {
-                    if (delta_distance < follow_distance && attack == 0)
+                    if (delta_distance < follow_distance && attack == 0 && !door_protect.enabled)
                     {
-                        player_script.player_hp -= 20.0f;
+                        if (boss_level == 1)
+                        {
+                            player_script.player_hp -= 20.0f;
+                        }
+                        else if (boss_level == 2)
+                        {
+                            Vector3 spawn_position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                            for (int i = 1; i <= 2; i++)
+                            {
+                                Instantiate(enemy_prefab, spawn_position, Quaternion.identity);
+                            }
+                        }
                         enemy_anim.SetTrigger("attack");
                         attack = 1;
                     }
-                    else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance)
+                    else if (delta_distance > follow_distance && delta_distance < abandon_follow_distance && !door_protect.enabled)
                     {
                         transform.position = Vector2.MoveTowards(transform.position,target.position,enemy_speed * Time.deltaTime);
                         if (face > 0)
@@ -88,7 +101,14 @@ public class BossAI : MonoBehaviour
             if (destroy_timer <= 0)
             {
                 destroy_timer = 0.0f;
-                SceneManager.LoadScene(0);
+                if (boss_level == 1)
+                {
+                    SceneManager.LoadScene(3);
+                }
+                else if (boss_level == 2)
+                {
+                    SceneManager.LoadScene(0);
+                }
             }
         }
     }
